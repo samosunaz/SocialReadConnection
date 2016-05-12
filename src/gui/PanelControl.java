@@ -1,3 +1,11 @@
+/**
+ * @author María Fernanda López Cárdenas	A01229740
+ * @author Samuel Osuna Zatarain			A01630427
+ * PanelControl.java
+ * May 8, 2016
+ * Version 2.0
+ */
+
 package gui;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -79,6 +87,9 @@ public class PanelControl extends JPanel implements ActionListener, ListSelectio
 		addActionsToComponents();
 	}
 	
+	/**
+	 * Adds the components to the panel
+	 */
 	private void addComponentsToPanel() {
 		this.jPanelInput = new JPanel();
 		this.jPanelOutput = new JPanel();
@@ -124,6 +135,9 @@ public class PanelControl extends JPanel implements ActionListener, ListSelectio
 		this.dlModelSelector = new DefaultListModel<>();
 	}
 	
+	/**
+	 * Sets the position an measurements of the components
+	 */
 	private void setBoundsToComponents() {
 		this.jPanelInput.setBounds(0, 0, this.getPreferredSize().width - 300, this.getPreferredSize().height - 400);
 		this.jLabelTitle.setBounds(10, 20, this.jLabelTitle.getPreferredSize().width, 30);
@@ -148,6 +162,9 @@ public class PanelControl extends JPanel implements ActionListener, ListSelectio
 		this.jScrollSelector.setBounds(this.jLabelSelectorInfo.getX(), this.jLabelSelectorInfo.getY() + this.jLabelSelectorInfo.getHeight(), this.jPanelSelector.getWidth() - 20, 540);
 	}
 	
+	/**
+	 * Sets the components characteristics
+	 */
 	private void setComponentCharacteristics() {
 		this.jPanelInput.setBorder(BorderFactory.createTitledBorder("Input"));
 		this.jPanelOutput.setBorder(BorderFactory.createTitledBorder("Output"));
@@ -159,6 +176,9 @@ public class PanelControl extends JPanel implements ActionListener, ListSelectio
 		this.jTextAreaConsole.setEditable(false);
 	}
 
+	/**
+	 * Adds the listeners to the components
+	 */
 	private void addActionsToComponents() {
 		this.jButtonAddBook.addActionListener(this);
 		this.jButtonSearchByTitle.addActionListener(this);
@@ -169,6 +189,9 @@ public class PanelControl extends JPanel implements ActionListener, ListSelectio
 		this.jTextFieldGenre.addFocusListener(this);
 	}
 	
+	/**
+	 * Adds a BookNode to the graph
+	 */
 	private void addBookNodeToGraph() {
 		this.jTextAreaInfo.setText("");
 		this.jTextAreaConsole.setText("");
@@ -184,6 +207,9 @@ public class PanelControl extends JPanel implements ActionListener, ListSelectio
 		}
 	}
 	
+	/**
+	 * Searchs a book based on its title
+	 */
 	private void searchByTitle() {
 		this.functionSearchByTitle = true;
 		this.jTextFieldAuthor.setText("");
@@ -216,6 +242,9 @@ public class PanelControl extends JPanel implements ActionListener, ListSelectio
 		}
 	}
 	
+	/**
+	 * Search a book based on its author
+	 */
 	private void searchByAuthor() {
 		this.functionSearchByAuthor = true;
 		this.jTextFieldTitle.setText("");
@@ -246,7 +275,10 @@ public class PanelControl extends JPanel implements ActionListener, ListSelectio
 			}
 		}
 	}
-
+	
+	/**
+	 * Search books based on its genre
+	 */
 	private void searchByGenre() {
 		this.functionSearchByGenre = true;
 		this.jLabelSelectorInfo.setText("Select a Genre:");
@@ -256,6 +288,9 @@ public class PanelControl extends JPanel implements ActionListener, ListSelectio
 		}
 	}
 	
+	/**
+	 * Clears the TextFields, TextsAreas and Lists.
+	 */
 	private void clearComponents() {
 		this.jTextFieldTitle.setText("");
 		this.jTextFieldAuthor.setText("");
@@ -265,7 +300,12 @@ public class PanelControl extends JPanel implements ActionListener, ListSelectio
 		this.jLabelSelectorInfo.setText("Info:");
 	}
 	
+	
 	@Override
+	
+	/**
+	 * Depending on the Button pressed, it is the function called
+	 */
 	public void actionPerformed(ActionEvent e) {
 		this.functionSearchByTitle = false;
 		this.functionSearchByAuthor = false;
@@ -292,6 +332,10 @@ public class PanelControl extends JPanel implements ActionListener, ListSelectio
 	}
 
 	@Override
+	/**
+	 * Adds to the JList the items depending on the function selected
+	 * The function selected is depending of the boolean
+	 */
 	public void valueChanged(ListSelectionEvent e) {
 		Object selectedValue = this.jListSelector.getSelectedValue();
 		if (!e.getValueIsAdjusting() && selectedValue != null) {
@@ -322,6 +366,9 @@ public class PanelControl extends JPanel implements ActionListener, ListSelectio
 		}
 	}
 
+	/**
+	 * Clears the JTextField of genres if it is selected
+	 */
 	@Override
 	public void focusGained(FocusEvent e) {
 		if (this.jTextFieldGenre.getText().trim().equals("Genre1,Genre2,. . .,GenreN")) {

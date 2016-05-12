@@ -1,7 +1,7 @@
 /**
  * @author María Fernanda López Cárdenas	A01229740
  * @author Samuel Osuna Zatarain			A01630427
- * AuthorNode.java
+ * AuthorNodeComparator.java
  * May 8, 2016
  * Version 2.0
  */
